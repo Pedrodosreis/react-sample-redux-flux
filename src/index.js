@@ -1,23 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux'
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import App from './app';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducers from './reducers/';
 
-const reducer = (state, action) => {
-    if(action.type === "INCREMENT") {
-        console.log("increment");
-    }
-    if(action.type === "DECREMENT") {
-        console.log("decrement");
-    }
-};
+let store = createStore(reducers);
 
-const store = createStore(reducer);
 
-ReactDOM.render(<App 
-    value={store.getState()}
-    onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
-    onDecrement={() => store.dispatch({ type: 'DECREMENT' })}
-/>, document.getElementById('root'));
-registerServiceWorker();
+ReactDOM.render(
+	<Provider store={store}>
+		<App />
+	</Provider>, 
+		document.getElementById('root'));
