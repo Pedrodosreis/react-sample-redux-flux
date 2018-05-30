@@ -3,7 +3,6 @@ import Header from './header/Header';
 import TaskBar from './Taskbar';
 import TaskList from './tasklist/TaskList'
 
-
 class App extends Component {
 	render() {
 		return (
@@ -12,8 +11,6 @@ class App extends Component {
 					<TaskBar />
 					<TaskList />
 				</div>
-
-
 			);
 	}
 }
